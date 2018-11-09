@@ -1,0 +1,74 @@
+IniRead, command11, Setting.ini, KeySetup, Command1
+IniRead, command22, Setting.ini, KeySetup, Command2
+IniRead, command33, Setting.ini, KeySetup, Command3
+IniRead, command44, Setting.ini, KeySetup, Command4
+IniRead, command55, Setting.ini, KeySetup, Command5
+
+Gui, Add, Text, x32 y19 w90 h20 , Введите команду
+Gui, Add, Text, x32 y49 w90 h20 , Введите команду
+Gui, Add, Text, x32 y79 w90 h20 , Введите команду
+Gui, Add, Text, x32 y109 w90 h20 , Введите команду
+Gui, Add, Text, x32 y139 w90 h20 , Введите команду
+Gui, Add, Edit, x122 y19 w110 h20 vEdit1, %Command11%
+Gui, Add, Edit, x122 y49 w110 h20 vEdit2, %Command22%
+Gui, Add, Edit, x122 y79 w110 h20 vEdit3, %Command33%
+Gui, Add, Edit, x122 y109 w110 h20 vEdit4, %Command44%
+Gui, Add, Edit, x122 y139 w110 h20 vEdit5, %Command55%
+Gui, Add, Button, x32 y179 w90 h30 gSave, Сохранить
+Gui, Add, Button, x132 y179 w90 h30 gStart, Запустить
+Gui, Show, w254 h223, Minecraft
+return
+
+Save:
+Gui, Submit, NoHide
+IniWrite, %Edit1%, Setting.ini, KeySetup, Command1
+IniWrite, %Edit2%, Setting.ini, KeySetup, Command2
+IniWrite, %Edit3%, Setting.ini, KeySetup, Command3
+IniWrite, %Edit4%, Setting.ini, KeySetup, Command4
+IniWrite, %Edit5%, Setting.ini, KeySetup, Command5
+Msgbox, 8256,  Настройки успешно применены!, Перезагрузите биндер и нажмите кнопку "Запустить" чтобы активировать биндер.
+return
+
+Start:
+Gui, Submit, Hide
+
+{
+	SetNumLockState, On
+
+SetKeyDelay, 0, 30
+
+Numpad1::
+Send, {t}
+sleep 40
+Send, %command11% {enter}
+return
+
+Numpad2::
+Send, {t}
+sleep 40
+Send, %command22% {enter}
+return
+
+Numpad3::
+Send, {t}
+sleep 40
+Send, %command33% {enter}
+return
+
+Numpad4::
+Send, {t}
+sleep 40
+Send, %command44% {enter}
+return
+
+Numpad5::
+Send, {t}
+sleep 40
+Send, %command55% {enter}
+return
+
+
+}
+
+GuiClose:
+ExitApp
